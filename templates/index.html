@@ -1,0 +1,168 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pytube</title>
+    <link rel="icon" type="images/png" href="images/youtube-icon.png">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css" integrity="sha384-3B6NwesSXE7YJlcLI9RpRqGf2p/EgVH8BgoKTaUrmKNDkHPStTQ3EyoYjCGXaOTS" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="header">
+        <!-- Header menu Start -->
+
+        <div class="header__left">
+            <i id="menu" class="material-icons">menu</i>
+            <a href="index.html">
+                <img src="{% static 'images/Kalimno-Art_Generate_a_modern_minimalistic_logo_in_a_cool_color_9da50668-1182-4fdd-8325-16b58c7c26de.png' %}" alt="">
+            </a>
+            <span ><h2>Pytube</h2></span>
+        </div>
+
+        <!-- Header menu end -->
+
+        <!-- Header seach Start -->
+
+        <div class="header__search">
+            <form action="">
+                <input type="text" placeholder="Search">
+                <button><i class="material-icons">search</i></button>
+            </form>
+        </div>
+        <!-- Header search Start -->
+        
+        <!-- Header Icons Start -->
+        <div class="header__icons">
+            <i class="material-icons display-this">search</i>
+            <i class="material-icons ">videocam</i>
+            <i class="material-icons">apps</i>
+            <i class="material-icons display-this">notifications</i>
+            <a href="channel.html"><i id="drop-down" class="material-icons display-this">account_circle</i></a>
+        </div>
+        <!-- Header Icons Ends -->
+
+    </div>
+
+    <!-- Main Body Starts -->
+    <div class="mainBody">
+        <div class="sidebar">
+            <div class="sidebar__categories">
+                
+                <!-- Single Category -->
+                <a href="index.html">
+                    <div class="sidebar__category">
+                        <i class="material-icons">home</i>
+                        <span>Home</span>
+                    </div>
+                </a>
+
+                <!-- Single Category -->
+                <div class="sidebar__category">
+                    <i class="material-icons">local_fire_department</i>
+                    <span>Tendencia</span>
+                </div>
+
+                <!-- Single Category -->
+                <div class="sidebar__category">
+                    <i class="material-icons">subscriptions</i>
+                    <span>Suscripciones</span>
+                </div>
+            </div>
+            <hr>
+            <div class="sidebar__categories">
+
+                <!-- Single Category -->
+                <div class="sidebar__category">
+                    <i class="material-icons">library_add_check</i>
+                    <span>Biblioteca</span>
+                </div>
+
+                <!-- Single Category -->
+                <div class="sidebar__category">
+                    <i class="material-icons">history</i>
+                    <span>Historial</span>
+                </div>
+
+                <!-- Single Category -->
+                <a href="channel-videos.html">
+                    <div class="sidebar__category">
+                        <i class="material-icons">play_arrow</i>
+                        <span>Tus Videos</span>
+                    </div>
+                </a>
+
+                <!-- Single Category -->
+                <div class="sidebar__category">
+                    <i class="material-icons">watch_later</i>
+                    <span>Ver después</span>
+                </div>
+
+                <!-- Single Category -->
+                <div class="sidebar__category">
+                    <i class="material-icons">thumb_up</i>
+                    <span>Liked Videos</span>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <!-- Sidebar Ends -->
+
+        <!-- Video Section Starts -->
+        <div class="videos">
+            <div class="drop-down-container">
+                <h1>Recomendados</h1>
+                <div class="dropdown-content-background">
+                    <div class="dropdown-contents">
+                        <div class="dropdown-content">
+                            <i class="material-icons">videocam</i>
+                            <span>Crear</span>
+                        </div>
+                        <div class="dropdown-content">
+                            <i class="material-icons">settings</i>
+                            <span>Configuración</span>
+                        </div>
+                        <div class="dropdown-content">
+                            <i class="material-icons">person</i>
+                            <span>Switch Account</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="videos__container">
+                <!-- Single Video Starts Here -->
+                {% for v in video %} <!-- video proviene del context -->
+
+                <div class="video">
+                    <div class="video__thumbnail">
+                        <img src="{{v.image.url}}">
+                    </div>
+                    <div class="video__details">
+                        <div class="author">
+                            <img src="images/logo.jpg" alt="">
+                        </div>
+                        <div class="title">
+                            <h3>{{ v.title|truncatechars:40}}</h3>
+                            <a href=""><small>{{ v.user }} <i class="fas fa-check-circle"></i></small></a>
+                            <span><small>{{v.views}} Vistas </small></span>
+                            <span>Subido el {{v.date}}</span>
+                        </div>
+
+                    </div>
+                </div>
+                {% endfor %}
+                
+
+
+            </div>
+        </div>
+    </div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
